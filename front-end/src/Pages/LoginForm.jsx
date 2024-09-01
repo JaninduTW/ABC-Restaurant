@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
   return (
-    <div className='bg-gray-200 h-lvh '>
-    <div className='flex w-full h-screen justify-center items-center'>
+    <div className='bg-gray-200 h-full '>
+    <div className='flex w-full h-screen justify-center items-center'>   
     <div className='w-full lg:w-2/5 justify-center items-center bg-white px-10 py-20 rounded-3xl border-2 border-gray-200'>
-      <h1 className='text-5xl font-semibold'>Welcome Back</h1>
-      <p className='font-medium text-lg text-gray-500 mt-4'>Welcome back! Please Enter Your Sign-in details.</p>
+      <h1 className='text-5xl font-semibold text-center '>Welcome Back</h1>
+      <p className='font-medium text-lg text-gray-500 mt-4 text-center '>Welcome back! Please Enter Your Sign-in details.</p>
       <div className='mt-8'>
         <div>
           <label className='text-lg font-medium'>Email</label>
@@ -34,7 +34,7 @@ const LoginForm = () => {
           <button className='ml-2 font-medium text-base text-blue-400'>Forgot password</button>
         </div>
         <div className='mt-8 flex flex-col gap-y-4'>
-          <button className='bg-blue-600 text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] transition-all hover:scale-[1.01] ease-in-out'>Sign-in</button>
+          <button className='bg-[#f09c20] text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] transition-all hover:scale-[1.01] ease-in-out'>Sign-in</button>
           {/* <button className='flex items-center justify-center gap-2 active:scale-[.98] transition-all hover:scale-[1.01] ease-in-out'>
             Sign-in with Google</button> */}
         </div>
