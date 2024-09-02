@@ -5,7 +5,8 @@ import food1 from '../Assests/food1.png'
 const Menu = () => {
   return (
     <div>
-       <div className='text-center' ><p className='text-[#000000] font-bold py-3  text-3xl pb-2 bg-white ' >GALLERY</p></div>
+      
+       <div className='text-center' ><p className='text-[#000000] font-bold py-3  text-3xl pb-2 bg-white ' >Menu</p></div>
         <div className='w-full px-4 bg-white' >
          
           <div className='max-w-[1240] mx-auto grid md:grid-cols-4 gap-8 pt-4 '>
@@ -62,6 +63,7 @@ const Menu = () => {
           </div>
           
         </div>
+       
     </div>
   )
 }
