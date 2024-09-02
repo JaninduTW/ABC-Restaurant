@@ -12,7 +12,7 @@ const About = () => {
      
 
       
-      <div className='text-white  max-w-[1240px] mx-auto grid md:grid-cols-1 mt-[4rem] ' >   
+      <div className='text-white  max-w-[1240px] mx-auto grid md:grid-cols-1 mt-[4rem] ' >  
 
 
        <div className='absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-30'
