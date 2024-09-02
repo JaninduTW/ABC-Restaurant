@@ -9,7 +9,7 @@ const Menu = () => {
        <div className='text-center' ><p className='text-[#000000] font-bold py-3  text-3xl pb-2 bg-white ' >Menu</p></div>
         <div className='w-full px-4 bg-white' >
          
-          <div className='max-w-[1240] mx-auto grid md:grid-cols-4 gap-8 pt-4 '>
+          <div className='max-w-[1240] mx-auto grid md:grid-cols-4 gap-8 pt-6 '>
 
            <div className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300' >
                <img className='w-56 mx-auto mt-[-2rem]' src={burger} alt="burger" />
