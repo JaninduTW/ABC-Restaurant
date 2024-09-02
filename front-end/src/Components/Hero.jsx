@@ -5,8 +5,8 @@ import burger from '../Assests/burger.png'
 const Hero = () => {
   return (
   
-        <div className='text-white max-w-[1240px] mx-auto grid md:grid-cols-2 mt-[7rem] ' >  
-           <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center '>  
+        <div className='text-white  max-w-[1240px] mx-auto grid md:grid-cols-2 mt-[4rem] ' >  
+           <div className='  max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center '>  
                {/* <p className='text-[#f09c20] font-bold  p-2 ' >GROWING WITH DATA ANALYTICS</p> */}
                <h1 className='md:text-5xl sm:text-4xl text-3xl font-bold md:py-1 ' >A TASTE YOU'LL REMEMBER.</h1> 
                <div className='flex justify-center items-center '>
