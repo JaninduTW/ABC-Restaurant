@@ -2,39 +2,45 @@ import React from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { ReactTyped } from "react-typed";
-import Res1 from '../Assests/Res1.png'
+import g1 from '../Assests/g1.jpg';
 
 const About = () => {
   return (
-
-    <div className='bg-black' >
+    <div>
       <Navbar/>
-     
-
       
-      <div className='text-white  max-w-[1240px] mx-auto grid md:grid-cols-1 mt-[4rem] ' >  
+      {/* Hero Section */}
+      <div className='relative bg-cover bg-center h-screen flex items-center justify-center' style={{ backgroundImage: `url('/path/to/your/hero-image.jpg')` }}>
+        <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div> {/* Overlay */}
+        <div className='relative z-10 text-center text-white'>
+          <h1 className='text-5xl font-extrabold mb-4'>A TASTE YOU'LL REMEMBER</h1>
+          <ReactTyped className='text-3xl font-bold text-[#f09c20]' strings={['ABC', 'RESTAURANT']} typeSpeed={80} backSpeed={80} loop />
+          <p className='text-lg font-medium mt-4'>Delicious, Tasty Foods From ABC Restaurant</p>
+        </div>
+      </div>
 
+      {/* About Section */}
+      <div className='bg-white py-16 px-4'>
+        <div className='max-w-[1240px] mx-auto text-center'>
+          <h2 className='text-4xl font-bold mb-8'>Welcome to ABC Restaurant</h2>
+          <p className='text-lg font-medium text-gray-700 mb-6'>
+            At ABC Restaurant, we pride ourselves on offering a one-of-a-kind dining experience where quality meets passion. Our culinary team brings together fresh, locally sourced ingredients to create dishes that are not only delicious but also artfully presented.
+          </p>
+          <p className='text-lg font-medium text-gray-700 mb-6'>
+            Whether you're in the mood for a comforting classic or an innovative fusion dish, our diverse menu has something to excite every taste bud. From our renowned seafood dishes to mouthwatering steaks and vegetarian delights, there’s always something special to savor.
+          </p>
+          <p className='text-lg font-medium text-gray-700 mb-6'>
+            We believe that great food is meant to be shared, which is why our restaurant has been designed to offer both intimate spaces for couples and larger tables for groups of friends and family. Our warm, inviting atmosphere ensures that every visit feels like a special occasion.
+          </p>
+          <p className='text-lg font-medium text-gray-700'>
+            At ABC Restaurant, it's not just about the food — it's about the experience. Join us for a culinary journey that tantalizes your taste buds and leaves you with memories worth savoring.
+          </p>
+          <div className='mt-8'>
+            <img className='mx-auto w-full max-w-[800px] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300' src={g1} alt="Delicious Dish" />
+          </div>
+        </div>
+      </div>
 
-       <div className='absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-30'
-                style={{ backgroundImage:` url(${Res1})` }} > 
-       </div>
-
-           <div className='  relative max-w-[800px] mt-[-30px] w-full h-screen mx-auto text-center flex flex-col justify-center  '>  
-               {/* <p className='text-[#f09c20] font-bold  p-2 ' >GROWING WITH DATA ANALYTICS</p> */}
-               <h1 className='md:text-5xl sm:text-4xl text-3xl font-bold md:py-1  ' >A TASTE YOU'LL REMEMBER.</h1> 
-               <div className='flex justify-center items-center '>
-                 <p className='md:text-3xl sm:text-2xl text-xl font-bold py-4 mt-1 ' >Delicious, Tasty Foods From </p> 
-                 <ReactTyped className='md:text-3xl sm:text-3xl text-xl font-bold md:pl-2 pl-2 text-[#f09c20]  mt-2 ' strings = {['ABC', 'RESTAURANT']} typeSpeed={80} backSpeed={80} loop />
-               </div>
-               <p className='md:text-lg text-base font-bold text-white' >At ABC Restaurant, we take pride in offering a delightful dining experience that blends exceptional cuisine with a warm and inviting atmosphere. 
-                Our menu features a wide range of dishes, carefully crafted using the freshest ingredients to satisfy every palate. Whether you're here for a casual meal with friends or a special occasion, our attentive staff is dedicated to making your visit memorable. 
-                Join us at ABC Restaurant, where great food and great company come together.</p>
-               {/* <button className='bg-[#5ba835] w-[200px] rounded-md font-large my-6 mx-auto py-3 text-white  font-bold hover:scale-105 duration-300' >Browse Menu</button> */}
-           </div> 
-
-           
-           {/* <img  className='w-[500px] mx-auto mt-[5rem] hover:scale-105 duration-300 ' src={burger} alt="burger" />  */}
-        </div>   
       <Footer />
     </div>
   )
