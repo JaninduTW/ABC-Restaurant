@@ -4,7 +4,7 @@ import {FaDribbbleSquare, FaFacebookSquare, FaGithubSquare, FaInstagramSquare, F
 
 const Footer = () => {
   return (
-    <div className='max-w-[1240px] mx-auto py-16 px-10 grid lg:grid-cols-3 gap-8 text-gray-300 bg-black'>
+    <div className='max-w-[1240px] mx-auto py-16 px-10 grid lg:grid-cols-3 gap-8 text-gray-300 bg-black  '>
         <div>
         <h1 className='w-full text-3xl font-bold text-[#f09c20] m-0'>ABC</h1>
         <p className='py-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
