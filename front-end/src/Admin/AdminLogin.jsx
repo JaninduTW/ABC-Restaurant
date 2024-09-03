@@ -15,7 +15,7 @@ const LoginForm = () => {
               <label className='text-lg font-medium text-gray-500 '>Email</label>  
               <input
                 type='email'
-                className='w-full   rounded-xl p-4 mt-2 bg-white shadow-2xl' 
+                className='w-full   rounded-xl p-4 mt-2 bg-white  border ' 
                 placeholder='Enter your Email '
                 name='email'
               />
@@ -24,7 +24,7 @@ const LoginForm = () => {
               <label className='text-lg font-medium text-gray-500 '>Password</label>
               <input
                 type='password'
-                className='w-full  rounded-xl p-4 mt-2 bg-white shadow-2xl' 
+                className='w-full  rounded-xl p-4 mt-2 bg-white border ' 
                 placeholder='Enter your Password'
               />
             </div>
