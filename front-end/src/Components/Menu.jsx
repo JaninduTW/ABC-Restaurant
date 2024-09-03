@@ -1,69 +1,63 @@
 import React from 'react'
 import burger from '../Assests/burger.png'
 import food1 from '../Assests/food1.png'
+import { Link } from 'react-router-dom' 
 
 const Menu = () => {
   return (
     <div>
       
        <div className='text-center' ><p className='text-[#000000] font-bold py-3  text-3xl pb-2 bg-white ' >Menu</p></div>
-        <div className='w-full px-4 bg-white' >
-         
-          <div className='max-w-[1240] mx-auto grid md:grid-cols-4 gap-8 pt-6 '>
+        {/* Menu Section */}
+      <div className="w-full px-4 bg-white py-12">
+        <div className="max-w-[1240px] mx-auto grid md:grid-cols-4 gap-8">
 
-           <div className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300' >
-               <img className='w-56 mx-auto mt-[-2rem]' src={burger} alt="burger" />
-               <h2 className='text-2xl font-bold text-center mb-2' >Burger</h2>
-               <p className='text-4xl font-bold text-center mb-2' >Rs. 1250/=</p>
-               <div className='text-center font-medium mt-3'>
-                     <p className='py-2'>Delicious</p>
-                     <p className='py-2'>Tasty</p>
-                     <p className='py-2'>For You</p>
-               </div>
-               <button className='bg-[#000000] w-[200px] rounded-md font-medium my-6 px-6 mx-auto py-3 text-white' >Order Now</button>
-           </div>
-
-           <div className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300' >
-               <img className='w-56 mx-auto mt-[-2rem]' src={food1} alt="burger" />
-               <h2 className='text-2xl font-bold text-center mb-2' >Wrap</h2>
-               <p className='text-4xl font-bold text-center mb-2' >Rs. 1250/=</p>
-               <div className='text-center font-medium mt-3'>
-                     <p className='py-2'>Delicious</p>
-                     <p className='py-2'>Tasty</p>
-                     <p className='py-2'>For You</p>
-               </div>
-               <button className='bg-[#000000] w-[200px] rounded-md font-medium my-6 px-6 mx-auto py-3 text-white' >Order Now</button>
-           </div>
-
-           <div className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300' >
-               <img className='w-56 mx-auto mt-[-2rem]' src={burger} alt="burger" />
-               <h2 className='text-2xl font-bold text-center mb-2' >Burger</h2>
-               <p className='text-4xl font-bold text-center mb-2' >Rs. 1250/=</p>
-               <div className='text-center font-medium mt-3'>
-                     <p className='py-2'>Delicious</p>
-                     <p className='py-2'>Tasty</p>
-                     <p className='py-2'>For You</p>
-               </div>
-               <button className='bg-[#000000] w-[200px] rounded-md font-medium my-6 px-6 mx-auto py-3 text-white' >Order Now</button>
-           </div>
-
-           <div className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300' >
-               <img className='w-56 mx-auto mt-[-2rem]' src={burger} alt="burger" />
-               <h2 className='text-2xl font-bold text-center mb-2' >Burger</h2>
-               <p className='text-4xl font-bold text-center mb-2' >Rs. 1250/=</p>
-               <div className='text-center font-medium mt-3'>
-                     <p className='py-2'>Delicious</p>
-                     <p className='py-2'>Tasty</p>
-                     <p className='py-2'>For You</p>
-               </div>
-               <button className='bg-[#000000] w-[200px] rounded-md font-medium my-6 px-6 mx-auto py-3 text-white' >Order Now</button>
-           </div>
-           <button className= 'text-white  bg-[#f09c20] w-[200px] rounded-md font-medium  mx-auto md:mx-[650px] py-3 mb-4 hover:scale-105 duration-300' >See More</button>
-           
+          {/* Menu Item - Burger */}
+          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
+            <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Burger" />
+            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Classic Burger</h2>
+            <p className="text-4xl font-bold text-center mb-2">Rs. 1250/=</p>
+            <p className="text-center text-gray-600 mb-4">Juicy beef patty, fresh lettuce, tomatoes, cheese, and our signature sauce.</p>
+            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
           </div>
-          
+
+          {/* Menu Item - Wrap */}
+          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
+            <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Wrap" />
+            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Grilled Chicken Wrap</h2>
+            <p className="text-4xl font-bold text-center mb-2">Rs. 950/=</p>
+            <p className="text-center text-gray-600 mb-4">Grilled chicken, fresh veggies, and a tangy sauce wrapped in a warm tortilla.</p>
+            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
+          </div>
+
+          {/* Menu Item - Pizza */}
+          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
+            <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Pizza" />
+            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Pepperoni Pizza</h2>
+            <p className="text-4xl font-bold text-center mb-2">Rs. 1800/=</p>
+            <p className="text-center text-gray-600 mb-4">Crispy crust, zesty tomato sauce, mozzarella cheese, and pepperoni slices.</p>
+            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
+          </div>
+
+          {/* Menu Item - Pasta */}
+          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
+            <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Pasta" />
+            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Creamy Alfredo Pasta</h2>
+            <p className="text-4xl font-bold text-center mb-2">Rs. 1500/=</p>
+            <p className="text-center text-gray-600 mb-4">Fettuccine pasta tossed in a creamy Alfredo sauce with parmesan cheese.</p>
+            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
+          </div>
+
         </div>
-       
+
+        {/* Centered See More Button */}
+        <div className="flex justify-center mt-8">
+          <Link className="text-white bg-[#f09c20] w-[200px] rounded-md font-medium py-3 hover:scale-105 duration-300 text-center " to='/menu' >
+            See More
+          </Link>
+        </div>
+
+      </div>
     </div>
   )
 }
