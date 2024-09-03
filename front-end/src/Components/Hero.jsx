@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReactTyped } from "react-typed";
 import burger from '../Assests/burger.png'
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -15,7 +16,8 @@ const Hero = () => {
                </div>
                <p className='md:text-2xl text-xl font-bold text-gray-500' >Welcome to ABC Restaurant, where great flavors and a cozy atmosphere create a memorable dining experience. 
                 Discover our diverse menu and enjoy culinary excellence today!</p>
-               <button className='bg-[#5ba835] w-[200px] rounded-md font-large my-6 mx-auto py-3 text-white  font-bold hover:scale-105 duration-300' >Browse Menu</button>
+               <Link className='bg-[#5ba835] w-[200px] rounded-md font-large my-6 mx-auto py-3 text-white  font-bold hover:scale-105 duration-300'  to='/menu' >Browse Menu</Link>
+               
            </div > 
            <img  className='w-[500px] mx-auto mt-[5rem] hover:scale-105 duration-300  py-7  ' src={burger} alt="burger"  /> 
         </div>   
