@@ -9,6 +9,11 @@ import Gallery from "./Pages/Gallery";
 import Reservation from "./Pages/Reservation";
 import Order from "./Pages/Order";
 import Registration from "./Pages/Registration";
+import AdminLogin from "./Admin/AdminLogin";
+import AdminDashboard from "./Admin/AdminDashboard";
+
+
+
 
 function App() {
   return (
@@ -24,7 +29,15 @@ function App() {
         <Route exact path='/order' element={ <Order/>}     />      
         <Route exact path='/contact' element={ <Contact/>}     />      
         <Route exact path='/about' element={ <About/>}     />      
-        <Route exact path='/gallery' element={ <Gallery/>}   />      
+        <Route exact path='/gallery' element={ <Gallery/>}   />   
+        <Route exact path='/adminlogin' element={ <AdminLogin/>}   />    
+        <Route exact path='/admindashboard' element={ <AdminDashboard/>}   />    
+       
+       
+    
+           
+ 
+           
       </Routes>
     
       </Router>
