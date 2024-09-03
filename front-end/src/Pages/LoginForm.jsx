@@ -40,7 +40,7 @@ const LoginForm = () => {
         </div>
         <div className='mt-8 flex justify-center items-center'>
           <p className='font-medium text-base'>Don't have an account?</p>
-          <Link className='text-blue-400 text-base font-medium ml-2' to='/registration' >Sign up</Link>
+          <Link className='text-blue-400 text-base font-medium ml-2' to='/registration'   >Sign up</Link>
         </div>
       </div>
     </div>
