@@ -10,17 +10,10 @@ const About = () => {
       <Navbar/>
       
       {/* Hero Section */}
-      <div className='relative bg-cover bg-center h-screen flex items-center justify-center' style={{ backgroundImage: `url('/path/to/your/hero-image.jpg')` }}>
-        <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div> {/* Overlay */}
-        <div className='relative z-10 text-center text-white'>
-          <h1 className='text-5xl font-extrabold mb-4'>A TASTE YOU'LL REMEMBER</h1>
-          <ReactTyped className='text-3xl font-bold text-[#f09c20]' strings={['ABC', 'RESTAURANT']} typeSpeed={80} backSpeed={80} loop />
-          <p className='text-lg font-medium mt-4'>Delicious, Tasty Foods From ABC Restaurant</p>
-        </div>
-      </div>
+     
 
       {/* About Section */}
-      <div className='bg-white py-16 px-4'>
+      <div className='bg-white py-[7rem] px-4  ' >
         <div className='max-w-[1240px] mx-auto text-center'>
           <h2 className='text-4xl font-bold mb-8'>Welcome to ABC Restaurant</h2>
           <p className='text-lg font-medium text-gray-700 mb-6'>
@@ -35,7 +28,7 @@ const About = () => {
           <p className='text-lg font-medium text-gray-700'>
             At ABC Restaurant, it's not just about the food — it's about the experience. Join us for a culinary journey that tantalizes your taste buds and leaves you with memories worth savoring.
           </p>
-          <div className='mt-8'>
+          <div className='mt-10'>
             <img className='mx-auto w-full max-w-[800px] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300' src={g1} alt="Delicious Dish" />
           </div>
         </div>
