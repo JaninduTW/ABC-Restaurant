@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
-const Reservation = () => {
+const Reservation = () => {   
   return (
     <div>
       <Navbar />
@@ -11,7 +11,8 @@ const Reservation = () => {
       <div className='bg-white min-h-screen '>
         <div className='w-full flex flex-col md:flex-row justify-center items-center pt-12 space-y-10 md:space-y-0 md:space-x-10 px-4 '>
 
-          <div className='w-full max-w-md md:max-w-lg lg:max-w-xl bg-white px-6 py-8 rounded-3xl border-2 border-gray-200 shadow '>
+             <div className=' py-10 grid md:grid-cols-2 ' >
+          <div className='w-full max-w-md md:max-w-lg lg:max-w-xl bg-white px-6 py-12 my-auto rounded-3xl border-2 border-gray-200 shadow '>
             <h1 className='text-3xl md:text-4xl font-semibold text-center'>Reserve Your Table</h1>
             <p className='font-medium text-lg text-gray-500 mt-4 text-center'>Enter Your Reservation Details</p>
             <div className='mt-8'>
@@ -47,7 +48,7 @@ const Reservation = () => {
             </div>
           </div>
 
-          <div className='w-full max-w-md md:max-w-lg lg:max-w-xl bg-white px-6 py-8 rounded-3xl border-2 border-gray-200 shadow  '>
+          <div className='w-full max-w-md md:max-w-lg lg:max-w-xl bg-white px-6 py-8 rounded-3xl border-2 border-gray-200 shadow ml-5 '>
             <h1 className='text-3xl md:text-4xl font-semibold text-center'>Reserve Your Table</h1>
             <p className='font-medium text-lg text-gray-500 mt-4 text-center'>No. of Available Seats:</p> 
             <div className='mt-8'>
@@ -89,6 +90,8 @@ const Reservation = () => {
                 <button className='bg-[#f09c20] w-full text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] transition-all hover:scale-[1.01] ease-in-out'>Reserve</button>
               </div>
             </div>
+          </div>
+
           </div>
 
         </div>
