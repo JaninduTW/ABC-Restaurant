@@ -25,7 +25,7 @@ const AdminDashboard = () => {
               <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Orders</h2>
               <p className='text-[#f09c20]'>View and manage all customer online orders.</p>
             </Link>
-            <Link to='/admin/users' className='bg-[#f09c20] rounded-lg p-6  shadow-2xl hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
+            <Link to='/adminmanageusers' className='bg-[#f09c20] rounded-lg p-6  shadow-2xl hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
               <h2 className='text-2xl font-semibold text-white mb-4'>User Management</h2>
               <p className='text-gray-50'>Manage customer and staff accounts.</p>
             </Link>

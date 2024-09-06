@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name="`Order`")
 public class Order {
 
     @Id
@@ -15,14 +16,15 @@ public class Order {
     @JoinColumn(name="customer_id", nullable = false)
     private User customer;
 
-//    @Column(nullable = false)
-//    private Timestamp timeStamp;
+    @Column( columnDefinition = "DATETIME", nullable = false)
+    private Timestamp timeStamp;
 
     @Column(nullable = false)
     private String address;
 
     @Column(nullable = false)
     private String status;
+
 
 
     //Getters and Setters
@@ -42,6 +44,14 @@ public class Order {
 
     public void setCustomer(User customer) {
         this.customer = customer;
+    }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public String getAddress() {

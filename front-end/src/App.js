@@ -11,6 +11,7 @@ import Order from "./Pages/Order";
 import Registration from "./Pages/Registration";
 import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
+import AdminManageUsers from "./Admin/AdminManageUsers";
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route exact path='/gallery' element={ <Gallery/>}   />   
         <Route exact path='/adminlogin' element={ <AdminLogin/>}   />    
         <Route exact path='/admindashboard' element={ <AdminDashboard/>}   />    
+        <Route exact path='/adminmanageusers' element={ <AdminManageUsers/>}   />    
        
        
     
