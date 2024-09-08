@@ -74,7 +74,8 @@ const Gallery = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className='bg-black' ><Footer /></div>
+      
     </div>
   );
 };

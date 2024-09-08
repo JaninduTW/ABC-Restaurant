@@ -12,6 +12,9 @@ import Registration from "./Pages/Registration";
 import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AdminManageUsers from "./Admin/AdminManageUsers";
+import AdminAddUsers from "./Admin/AdminAddUsers";
+import AdminEditUsers from "./Admin/AdminEditUsers";
+
 
 
 
@@ -34,6 +37,9 @@ function App() {
         <Route exact path='/adminlogin' element={ <AdminLogin/>}   />    
         <Route exact path='/admindashboard' element={ <AdminDashboard/>}   />    
         <Route exact path='/adminmanageusers' element={ <AdminManageUsers/>}   />    
+        <Route exact path='/adminaddusers' element={ <AdminAddUsers/>}   />    
+        <Route exact path='/admineditusers/:id' element={ <AdminEditUsers/>}   />    
+         
        
        
     

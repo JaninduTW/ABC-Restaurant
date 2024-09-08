@@ -35,7 +35,8 @@ const Contact = () => {
           <img className='w-[400px] h-full object-cover rounded-md mt-4 md:mt-0' src={chef2} alt="ABC Restaurant" />
         </div>
       </div>
-      <Footer />
+      <div className='bg-black' ><Footer /></div>
+      
     </div>
   );
 };

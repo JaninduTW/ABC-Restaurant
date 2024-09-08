@@ -98,7 +98,7 @@ const Reservation = () => {
       </div>
       </div>
 
-      <Footer />
+      <div className='bg-black' ><Footer /></div>
       
     </div>
   );
