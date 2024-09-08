@@ -1,17 +1,17 @@
 package com.abc_restaurant.back_end.model;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import java.util.Arrays;
 
 @Entity
 public class Menu {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuId;
 
     @ManyToOne
-    @JoinColumn(name="category_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @Column(nullable = false)
@@ -26,8 +26,11 @@ public class Menu {
     @Column(nullable = false)
     private Boolean availability;
 
-    //Getters and Setters
+    // Adding the image field as a byte array
+    @Lob
+    private byte[] image;
 
+    // Getters and Setters
     public Long getMenuId() {
         return menuId;
     }
@@ -74,5 +77,26 @@ public class Menu {
 
     public void setAvailability(Boolean availability) {
         this.availability = availability;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "menuId=" + menuId +
+                ", category=" + category +
+                ", item='" + item + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", availability=" + availability +
+                ", image=" + Arrays.toString(image) +
+                '}';
     }
 }

@@ -30,9 +30,9 @@ const AdminDashboard = () => {
               <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>User Management</h2>
               <p className='text-black font-medium'>Manage customer and staff accounts.</p>
             </Link>
-            <Link to='/admin/content' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
-              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Content Management</h2>
-              <p className='text-black font-medium '>Update menu items, promotions, and gallery.</p>
+            <Link to='/adminmanagemenu' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
+              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Menu Management</h2>
+              <p className='text-black font-medium '>Update menu items.</p>
             </Link>
             <Link to='/admin/reports' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300  border '>
               <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Reports</h2>

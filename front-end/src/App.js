@@ -14,6 +14,9 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import AdminManageUsers from "./Admin/AdminManageUsers";
 import AdminAddUsers from "./Admin/AdminAddUsers";
 import AdminEditUsers from "./Admin/AdminEditUsers";
+import AdminManageMenu from "./Admin/AdminManageMenu";
+import AdminAddMenu from "./Admin/AdminAddMenu";
+import AdminEditMenu from "./Admin/AdminEditMenu";
 
 
 
@@ -39,6 +42,9 @@ function App() {
         <Route exact path='/adminmanageusers' element={ <AdminManageUsers/>}   />    
         <Route exact path='/adminaddusers' element={ <AdminAddUsers/>}   />    
         <Route exact path='/admineditusers/:id' element={ <AdminEditUsers/>}   />    
+        <Route exact path='/adminmanagemenu' element={ <AdminManageMenu/>}   />    
+        <Route exact path='/adminaddmenu' element={ <AdminAddMenu/>}   />    
+        <Route exact path='/admineditmenu/:id' element={ <AdminEditMenu/>}   />    
          
        
        
