@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -50,16 +54,17 @@ public class MenuController {
 
     // Creates a new menu item
     @PostMapping("/menu")
-    public Menu createMenu(@RequestParam("item") String item,
+    public Menu createMenu( @RequestParam("item") String item,
                            @RequestParam("description") String description,
                            @RequestParam("price") Double price,
-                           @RequestParam("availability") Boolean availability,
+                           @RequestParam("availability") String availability,
                            @RequestParam("category") Long categoryId,
                            @RequestParam("image") MultipartFile image) throws IOException {
 
         // Find the category by its ID; if not found, throw an error
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
+
 
         // Create a new menu object and set its properties
         Menu menu = new Menu();
@@ -70,9 +75,54 @@ public class MenuController {
         menu.setCategory(category); // Set the category for this menu item
         menu.setImage(image.getBytes()); // Save the image as byte data
 
+        if (image != null && !image.isEmpty()) {
+            // Resize or compress image before storing
+            byte[] resizedImage = resizeImage(image);
+            menu.setImage(resizedImage);
+        }
         // Save the menu item through the service and return it
         return menuService.saveMenu(menu);
+
     }
+
+
+    public byte[] resizeImage(MultipartFile imageFile) throws IOException {
+        BufferedImage originalImage = ImageIO.read(imageFile.getInputStream());
+
+        // Set desired dimensions
+        int width = 300;
+        int height = 300;
+
+        // Create a resized version of the image
+        BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = resizedImage.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(originalImage, 0, 0, width, height, null);
+        g.dispose();
+
+        // Get the original file extension
+        String originalFilename = imageFile.getOriginalFilename();
+        String formatName = "jpg";  // Default to jpg if no valid extension is found
+
+        if (originalFilename != null && originalFilename.contains(".")) {
+            String fileExtension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1).toLowerCase();
+
+            // Handle different file types based on the file extension
+            if (fileExtension.equals("png")) {
+                formatName = "png";
+            } else if (fileExtension.equals("jpg") || fileExtension.equals("jpeg")) {
+                formatName = "jpg";
+            }
+            // Add more formats if needed
+        }
+
+        // Convert resized image to byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(resizedImage, formatName, baos);
+        return baos.toByteArray();
+    }
+
+
 
     // Updates an existing menu item
     @PutMapping("/menu/{id}")
@@ -80,25 +130,38 @@ public class MenuController {
                            @RequestParam("item") String item,
                            @RequestParam("description") String description,
                            @RequestParam("price") Double price,
-                           @RequestParam("availability") Boolean availability,
-                           @RequestParam("image") MultipartFile image) throws IOException {
-        // Fetch the menu item by its ID
+                           @RequestParam("availability") String availability,
+                           @RequestParam("category") Long categoryId,
+                           @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
+
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        // Retrieve the menu item by ID
         Menu menu = menuService.getMenuById(id);
+
         if (menu != null) {
-            // Update the fields of the menu item
+            // Update text fields
             menu.setItem(item);
             menu.setDescription(description);
             menu.setPrice(price);
             menu.setAvailability(availability);
-            if (image != null) {
-                // If a new image is provided, update it
-                menu.setImage(image.getBytes());
+            menu.setCategory(category);
+
+            // Only update the image if a new one is provided
+            if (image != null && !image.isEmpty()) {
+                // Resize or compress image before storing
+                byte[] resizedImage = resizeImage(image);
+                menu.setImage(resizedImage);
             }
-            // Save the updated menu item
+
+            // Save and return updated menu
             return menuService.saveMenu(menu);
         }
-        return null; // If menu item is not found, return null
+
+        return null;  // Could throw an exception if menu is not found
     }
+
 
     // Deletes a menu item by its ID
     @DeleteMapping("/menu/{id}")
