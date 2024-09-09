@@ -13,7 +13,7 @@ public class ResTable {
     private Long id;
 
     @Column(nullable = false)
-    private Long tableNo;
+    private String tableNo;
 
     @Column(nullable = false)
     private Long noOfSeats;
@@ -26,11 +26,11 @@ public class ResTable {
         this.id = id;
     }
 
-    public Long getTableNo() {
+    public String getTableNo() {
         return tableNo;
     }
 
-    public void setTableNo(Long tableNo) {
+    public void setTableNo(String tableNo) {
         this.tableNo = tableNo;
     }
 

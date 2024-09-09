@@ -18,6 +18,8 @@ const AdminAddMenu = () => {
 
   const { item, description, price, category_id, availability } = user;
 
+  const cleanPrice = price.replace(/[^0-9.]/g, ''); // Removes $ and other non-numeric symbols
+
   useEffect(() => {
     // Fetch all categories for the dropdown
     const fetchCategories = async () => {
@@ -43,7 +45,7 @@ const AdminAddMenu = () => {
     formData.append('item', item);
     formData.append('description', description);
     formData.append('price', price);
-    formData.append('category_id', category_id);
+    formData.append('category', category_id);
     formData.append('availability', availability);
     if (image) {
       formData.append('image', image);
@@ -56,7 +58,7 @@ const AdminAddMenu = () => {
       },
     });
 
-    navigate("/adminmanageusers");
+    navigate("/adminmanagemenu");
   };
 
   return (
@@ -151,8 +153,8 @@ const AdminAddMenu = () => {
                   onChange={onInputChange}
                 >
                   <option value="" disabled>Select availability</option>
-                  <option value="1">Yes</option>
-                  <option value="0">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
 

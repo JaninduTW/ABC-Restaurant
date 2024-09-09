@@ -34,6 +34,15 @@ const AdminMenuManage = () => {
       <div>
         <h1 className="text-center text-2xl font-bold text-[#f09c20] mb-4">MENU MANAGEMENT</h1>
       </div>
+ <div><div className="flex justify-end mb-4">
+        <Link
+          className="outline outline-black text-black hover:bg-black hover:text-white hover:outline-none py-2 px-4 rounded"
+          to="/adminmanagecategory"
+        >
+          Manage Category
+        </Link>
+      </div>
+      
       <div className="flex justify-end mb-4">
         <Link
           className="outline outline-[#f09c20] text-[#f09c20] hover:bg-[#f09c20] hover:text-white hover:outline-none py-2 px-4 rounded"
@@ -41,7 +50,8 @@ const AdminMenuManage = () => {
         >
           Add New Food Item
         </Link>
-      </div>
+      </div></div>
+      
       <div className="overflow-x-auto shadow-xl">
         <table className="min-w-full bg-white shadow rounded-lg border border-gray-200">
           <thead className="bg-gray-200">
@@ -63,7 +73,7 @@ const AdminMenuManage = () => {
                 <td className="px-4 py-2 text-gray-700 text-center">{menu.item}</td>
                 <td className="px-4 py-2 text-gray-700 text-center">{menu.category.categoryName}</td>
                 <td className="px-4 py-2 text-gray-700 text-center">{menu.description}</td>
-                <td className="px-4 py-2 text-gray-700 text-center">${menu.price.toFixed(2)}</td>
+                <td className="px-4 py-2 text-gray-700 text-center">LKR {menu.price.toFixed(2)}</td>
                 <td className="px-4 py-2 text-center">
                   {menu.image ? (
                     <img
@@ -76,7 +86,7 @@ const AdminMenuManage = () => {
                   )}
                 </td>
                 <td className="px-4 py-2 text-gray-700 text-center">
-                  {menu.availability ? 'Yes' : 'No'}
+                  {menu.availability}
                 </td>
                 <td className="px-4 py-2 text-center bg-gray-50">
                   <Link

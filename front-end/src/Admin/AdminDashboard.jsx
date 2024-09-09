@@ -34,9 +34,9 @@ const AdminDashboard = () => {
               <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Menu Management</h2>
               <p className='text-black font-medium '>Update menu items.</p>
             </Link>
-            <Link to='/admin/reports' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300  border '>
-              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Reports</h2>
-              <p className='text-black font-medium'>Generate reports on user activity and finances.</p>
+            <Link to='/adminmanagetables' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300  border '>
+              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Table Management</h2>
+              <p className='text-black font-medium'>Manage tables.</p>
             </Link>
             <Link to='/admin/settings' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
               <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>System Settings</h2>
