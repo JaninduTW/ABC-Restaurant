@@ -54,10 +54,10 @@ public class MenuController {
 
     // Creates a new menu item
     @PostMapping("/menu")
-    public Menu createMenu( @RequestParam("item") String item,
+    public Menu createMenu(@RequestParam("item") String item,
                            @RequestParam("description") String description,
                            @RequestParam("price") Double price,
-                           @RequestParam("availability") String availability,
+                           @RequestParam("availability") Boolean availability, // Changed to Boolean
                            @RequestParam("category") Long categoryId,
                            @RequestParam("image") MultipartFile image) throws IOException {
 
@@ -65,13 +65,12 @@ public class MenuController {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
-
         // Create a new menu object and set its properties
         Menu menu = new Menu();
         menu.setItem(item);
         menu.setDescription(description);
         menu.setPrice(price);
-        menu.setAvailability(availability);
+        menu.setAvailability(availability); // Set the availability
         menu.setCategory(category); // Set the category for this menu item
         menu.setImage(image.getBytes()); // Save the image as byte data
 
@@ -82,9 +81,7 @@ public class MenuController {
         }
         // Save the menu item through the service and return it
         return menuService.saveMenu(menu);
-
     }
-
 
     public byte[] resizeImage(MultipartFile imageFile) throws IOException {
         BufferedImage originalImage = ImageIO.read(imageFile.getInputStream());
@@ -122,15 +119,13 @@ public class MenuController {
         return baos.toByteArray();
     }
 
-
-
     // Updates an existing menu item
     @PutMapping("/menu/{id}")
     public Menu updateMenu(@PathVariable Long id,
                            @RequestParam("item") String item,
                            @RequestParam("description") String description,
                            @RequestParam("price") Double price,
-                           @RequestParam("availability") String availability,
+                           @RequestParam("availability") Boolean availability, // Changed to Boolean
                            @RequestParam("category") Long categoryId,
                            @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
 
@@ -145,7 +140,7 @@ public class MenuController {
             menu.setItem(item);
             menu.setDescription(description);
             menu.setPrice(price);
-            menu.setAvailability(availability);
+            menu.setAvailability(availability); // Update availability
             menu.setCategory(category);
 
             // Only update the image if a new one is provided
@@ -161,7 +156,6 @@ public class MenuController {
 
         return null;  // Could throw an exception if menu is not found
     }
-
 
     // Deletes a menu item by its ID
     @DeleteMapping("/menu/{id}")

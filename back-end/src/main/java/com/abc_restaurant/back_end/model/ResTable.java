@@ -18,6 +18,15 @@ public class ResTable {
     @Column(nullable = false)
     private Long noOfSeats;
 
+    @Column(nullable = false)
+    private String contact;
+
+    @Column(nullable = false)
+    private String location; // e.g., MATARA
+
+//Getters and Setters
+
+
     public Long getId() {
         return id;
     }
@@ -40,5 +49,21 @@ public class ResTable {
 
     public void setNoOfSeats(Long noOfSeats) {
         this.noOfSeats = noOfSeats;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

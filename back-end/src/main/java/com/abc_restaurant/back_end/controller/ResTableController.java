@@ -7,50 +7,55 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class ResTableController {
 
     @Autowired
-    private ResTableService resTableService;
+    private ResTableService tableService;
 
-    // Retrieve all tables
-    @GetMapping("/tables")
+    // Get all tables
+    @GetMapping("/table/getalltables")
     public List<ResTable> getAllTables() {
-        return resTableService.getAllTables();
+        return tableService.getAllTables();
     }
 
-    // Retrieve a table by its ID
-    @GetMapping("/tables/{id}")
+    // Get table by ID
+    @GetMapping("/table/{id}")
     public ResponseEntity<ResTable> getTableById(@PathVariable Long id) {
-        Optional<ResTable> table = resTableService.getTableById(id);
-        return table.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        ResTable table = tableService.getTableById(id).orElse(null);
+        if (table == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(table);
     }
 
     // Create a new table
-    @PostMapping("/tables")
+    @PostMapping("/table/create")
     public ResTable createTable(@RequestBody ResTable table) {
-        return resTableService.addTable(table);
+        return tableService.createTable(table);
     }
 
     // Update a table
-    @PutMapping("/tables/{id}")
-    public ResponseEntity<ResTable> updateTable(@PathVariable Long id, @RequestBody ResTable table) {
-        ResTable updatedTable = resTableService.updateTable(id, table);
-        if (updatedTable != null) {
+    @PutMapping("/table/update/{id}")
+    public ResponseEntity<ResTable> updateTable(@PathVariable Long id, @RequestBody ResTable tableDetails) {
+        try {
+            ResTable updatedTable = tableService.updateTable(id, tableDetails);
             return ResponseEntity.ok(updatedTable);
-        } else {
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     // Delete a table
-    @DeleteMapping("/tables/{id}")
+    @DeleteMapping("/table/delete/{id}")
     public ResponseEntity<Void> deleteTable(@PathVariable Long id) {
-        resTableService.deleteTable(id);
-        return ResponseEntity.noContent().build();
+        try {
+            tableService.deleteTable(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

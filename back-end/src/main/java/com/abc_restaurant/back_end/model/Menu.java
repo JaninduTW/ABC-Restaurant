@@ -24,16 +24,14 @@ public class Menu {
     private Double price;
 
     @Column(nullable = false)
-    private String availability;
+    private Boolean availability; // Changed to Boolean
 
     // Adding the image field as a byte array
     @Lob
     @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
-
     // Getters and Setters
-
 
     public Long getMenuId() {
         return menuId;
@@ -75,11 +73,11 @@ public class Menu {
         this.price = price;
     }
 
-    public String getAvailability() {
+    public Boolean getAvailability() {
         return availability;
     }
 
-    public void setAvailability(String availability) {
+    public void setAvailability(Boolean availability) {
         this.availability = availability;
     }
 
