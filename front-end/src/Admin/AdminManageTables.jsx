@@ -5,8 +5,8 @@ const AdminManageTables = () => {
   const [tables, setTables] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [newTable, setNewTable] = useState({ tableNo: '', noOfSeats: '' });
-  const [currentTable, setCurrentTable] = useState({ id: null, tableNo: '', noOfSeats: '' });
+  const [newTable, setNewTable] = useState({ tableNo: '', noOfSeats: '', location: '' });
+  const [currentTable, setCurrentTable] = useState({ id: null, tableNo: '', noOfSeats: '', location: '' });
 
   // Load tables when component is mounted
   useEffect(() => {
@@ -15,7 +15,7 @@ const AdminManageTables = () => {
 
   const loadTables = async () => {
     try {
-      const result = await axios.get('http://localhost:8080/tables');
+      const result = await axios.get('http://localhost:8080/table/getalltables');
       setTables(result.data);
     } catch (error) {
       console.error('Error fetching tables:', error);
@@ -23,25 +23,25 @@ const AdminManageTables = () => {
   };
 
   const addTable = async () => {
-    if (!newTable.tableNo.trim() || !newTable.noOfSeats) {
+    if (!newTable.tableNo.trim() || !newTable.noOfSeats || !newTable.location.trim()) {
       return alert('All fields are required.');
     }
     try {
-      await axios.post('http://localhost:8080/tables', newTable);
+      await axios.post('http://localhost:8080/table/create', newTable);
       loadTables();
       setShowAddModal(false);
-      setNewTable({ tableNo: '', noOfSeats: '' });
+      setNewTable({ tableNo: '', noOfSeats: '', location: '' });
     } catch (error) {
       console.error('Error adding table:', error);
     }
   };
 
   const editTable = async () => {
-    if (!currentTable.tableNo.trim() || !currentTable.noOfSeats) {
+    if (!currentTable.tableNo.trim() || !currentTable.noOfSeats || !currentTable.location.trim()) {
       return alert('All fields are required.');
     }
     try {
-      await axios.put(`http://localhost:8080/tables/${currentTable.id}`, currentTable);
+      await axios.put(`http://localhost:8080/table/update/${currentTable.id}`, currentTable);
       loadTables();
       setShowEditModal(false);
     } catch (error) {
@@ -52,7 +52,7 @@ const AdminManageTables = () => {
   const deleteTable = async (id) => {
     if (window.confirm('Are you sure you want to delete this table?')) {
       try {
-        await axios.delete(`http://localhost:8080/tables/${id}`);
+        await axios.delete(`http://localhost:8080/table/delete/${id}`);
         loadTables();
       } catch (error) {
         console.error('Error deleting table:', error);
@@ -62,6 +62,8 @@ const AdminManageTables = () => {
 
   return (
     <div className="container mx-auto p-4 bg-white h-screen">
+      
+
       <div className="mt-20">
         <h1 className="text-center text-2xl font-bold text-[#f09c20]">TABLE MANAGEMENT</h1>
       </div>
@@ -82,6 +84,7 @@ const AdminManageTables = () => {
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">ID</th>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">Table Number</th>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">No. of Seats</th>
+              <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">Location</th>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">Actions</th>
             </tr>
           </thead>
@@ -91,6 +94,7 @@ const AdminManageTables = () => {
                 <td className="px-4 py-2 text-gray-700 text-center font-bold">{table.id}</td>
                 <td className="px-4 py-2 text-gray-700 text-center">{table.tableNo}</td>
                 <td className="px-4 py-2 text-gray-700 text-center">{table.noOfSeats}</td>
+                <td className="px-4 py-2 text-gray-700 text-center">{table.location}</td>
                 <td className="px-4 py-2 text-center bg-gray-50">
                   <button
                     onClick={() => {
@@ -130,8 +134,17 @@ const AdminManageTables = () => {
               type="number"
               className="border w-full p-2 mb-4"
               placeholder="Enter no. of seats"
+              min={0}
+              max={12}
               value={newTable.noOfSeats}
               onChange={(e) => setNewTable({ ...newTable, noOfSeats: e.target.value })}
+            />
+            <input
+              type="text"
+              className="border w-full p-2 mb-4"
+              placeholder="Enter location"
+              value={newTable.location}
+              onChange={(e) => setNewTable({ ...newTable, location: e.target.value })}
             />
             <div className="flex justify-end">
               <button
@@ -167,6 +180,12 @@ const AdminManageTables = () => {
               className="border w-full p-2 mb-4"
               value={currentTable.noOfSeats}
               onChange={(e) => setCurrentTable({ ...currentTable, noOfSeats: e.target.value })}
+            />
+            <input
+              type="text"
+              className="border w-full p-2 mb-4"
+              value={currentTable.location}
+              onChange={(e) => setCurrentTable({ ...currentTable, location: e.target.value })}
             />
             <div className="flex justify-end">
               <button

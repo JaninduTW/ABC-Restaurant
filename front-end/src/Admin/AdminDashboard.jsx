@@ -14,8 +14,8 @@ const AdminDashboard = () => {
       <main className='flex-grow'>
         <div className='max-w-[1240px] mx-auto py-12 px-4  '>
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 '>
-            <Link to='/admin/reservations' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
-              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'>Reservations</h2>
+            <Link to='/Adminmanagereservation' className='bg-white outline outline-[#f09c20] rounded-lg p-6  hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>
+              <h2 className='text-2xl font-semibold text-[#f09c20] mb-4'> Reservations</h2>
               <p className='text-black font-medium '>View and manage all customer reservations.</p>
             </Link>
             <Link to='/admin/queries' className='bg-white outline outline-[#f09c20] rounded-lg p-6   hover:shadow-lg transform hover:scale-105 transition-transform duration-300 border '>

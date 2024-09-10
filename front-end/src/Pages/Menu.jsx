@@ -1,156 +1,117 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-import burger from '../Assests/burger.png';
-import food1 from '../Assests/food1.png'; 
-// import pizza from '../Assests/pizza.png';
-// import pasta from '../Assests/pasta.png';
 
-const Menu = () => {
+const Order = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [categories, setCategories] = useState(['All']);
+  const [foodItems, setFoodItems] = useState([]);
+
+  // Fetch categories from the API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/categories');
+        const fetchedCategories = response.data.map((cat) => cat.categoryName);
+        setCategories(['All', ...fetchedCategories]);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Fetch food items from the API
+  useEffect(() => {
+    const fetchFoodItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/menu');
+        const fetchedFoodItems = response.data.map((menuItem) => ({
+          id: menuItem.menuId,
+          name: menuItem.item,
+          price: menuItem.price,
+          image: `http://localhost:8080/menu/image/${menuItem.menuId}`,
+          category: menuItem.category.categoryName,
+          description: menuItem.description,
+          availability: menuItem.availability ? 'Yes' : 'No' // Adjust for boolean value
+        }));
+        setFoodItems(fetchedFoodItems);
+      } catch (error) {
+        console.error('Error fetching food items:', error);
+      }
+    };
+    fetchFoodItems();
+  }, []);
+
+  // Filter food items based on the search term and selected category
+  const filteredItems = foodItems.filter(
+    (item) =>
+      (selectedCategory === 'All' || item.category === selectedCategory) &&
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <Navbar />
-
-      {/* Menu Heading */}
-      <div className="text-center">
-        <p className="text-[#000000] font-bold py-3 text-3xl pb-2 pt-[5.5rem] bg-white">Menu</p>
+      <div className='text-center'>
+        <p className='text-[#000000] font-bold py-3 text-3xl pb-2 pt-[5.5rem] bg-white'>Menu</p>
       </div>
 
-      {/* Menu Section */}
-      <div className="w-full px-4 bg-white py-12">
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-4 gap-8">
+      {/* Search bar */}
+      <div className='w-full px-4 bg-white text-center py-4'>
+        <input
+          type='text'
+          placeholder='Search for food...'
+          className='border p-2 w-[300px] rounded-md focus:ring-2 focus:ring-[#f09c20] outline-none'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
-          {/* Menu Item - Burger */}
-          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-            <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Burger" />
-            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Classic Burger</h2>
-            <p className="text-4xl font-bold text-center mb-2">Rs. 1250/=</p>
-            <p className="text-center text-gray-600 mb-4">Juicy beef patty, fresh lettuce, tomatoes, cheese, and our signature sauce.</p>
-            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-          </div>
+      {/* Category selection */}
+      <div className='w-full px-4 bg-white text-center py-4'>
+        <select
+          className='border p-2 rounded-md focus:ring-2 focus:ring-[#f09c20] outline-none'
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
 
-          {/* Menu Item - Wrap */}
-          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-            <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Wrap" />
-            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Grilled Chicken Wrap</h2>
-            <p className="text-4xl font-bold text-center mb-2">Rs. 950/=</p>
-            <p className="text-center text-gray-600 mb-4">Grilled chicken, fresh veggies, and a tangy sauce wrapped in a warm tortilla.</p>
-            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-          </div>
-
-          {/* Menu Item - Pizza */}
-          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-            <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Pizza" />
-            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Pepperoni Pizza</h2>
-            <p className="text-4xl font-bold text-center mb-2">Rs. 1800/=</p>
-            <p className="text-center text-gray-600 mb-4">Crispy crust, zesty tomato sauce, mozzarella cheese, and pepperoni slices.</p>
-            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-          </div>
-
-          {/* Menu Item - Pasta */}
-          <div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-            <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Pasta" />
-            <h2 className="text-2xl font-bold text-center mt-4 mb-2">Creamy Alfredo Pasta</h2>
-            <p className="text-4xl font-bold text-center mb-2">Rs. 1500/=</p>
-            <p className="text-center text-gray-600 mb-4">Fettuccine pasta tossed in a creamy Alfredo sauce with parmesan cheese.</p>
-            {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-          </div>
-
+      {/* Display filtered food items */}
+      <div className='w-full px-4 bg-white'>
+        <div className='max-w-[1240px] mx-auto grid md:grid-cols-4 gap-8 pt-4'>
+          {filteredItems.length ? (
+            filteredItems.map((item) => (
+              <div key={item.id} className='w-full shadow-xl flex flex-col p-4 my-6 rounded-lg hover:scale-105 duration-300'>
+                <img className='w-56 mx-auto mt-[-2rem] bg-transparent' src={item.image} alt={item.name} />
+                <h2 className='text-2xl font-bold text-center mb-2'>{item.name}</h2>
+                <p className='text-xl font-semibold text-center mb-2'>{item.category}</p>
+                <p className='text-4xl font-bold text-center mb-2'>Rs. {item.price}/=</p>
+                <p className='text-center mb-2'>{item.description}</p>
+                <p className={`text-center font-medium mt-2 ${item.availability === 'Yes' ? 'text-green-600' : 'text-red-600'}`}>
+                  {item.availability}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p className='text-center w-full text-gray-600'>No food items found. Please try a different search.</p>
+          )}
         </div>
-      
-      
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-4 gap-8 mt-12 "  >
-
-{/* Menu Item - Burger */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Burger" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Classic Burger</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1250/=</p>
-  <p className="text-center text-gray-600 mb-4">Juicy beef patty, fresh lettuce, tomatoes, cheese, and our signature sauce.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Wrap */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Wrap" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Grilled Chicken Wrap</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 950/=</p>
-  <p className="text-center text-gray-600 mb-4">Grilled chicken, fresh veggies, and a tangy sauce wrapped in a warm tortilla.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Pizza */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Pizza" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Pepperoni Pizza</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1800/=</p>
-  <p className="text-center text-gray-600 mb-4">Crispy crust, zesty tomato sauce, mozzarella cheese, and pepperoni slices.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Pasta */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Pasta" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Creamy Alfredo Pasta</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1500/=</p>
-  <p className="text-center text-gray-600 mb-4">Fettuccine pasta tossed in a creamy Alfredo sauce with parmesan cheese.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-</div>
-
-
-<div className="max-w-[1240px] mx-auto grid md:grid-cols-4 gap-8 mt-12 "  >
-
-{/* Menu Item - Burger */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Burger" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Classic Burger</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1250/=</p>
-  <p className="text-center text-gray-600 mb-4">Juicy beef patty, fresh lettuce, tomatoes, cheese, and our signature sauce.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Wrap */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Wrap" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Grilled Chicken Wrap</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 950/=</p>
-  <p className="text-center text-gray-600 mb-4">Grilled chicken, fresh veggies, and a tangy sauce wrapped in a warm tortilla.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Pizza */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={burger} alt="Pizza" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Pepperoni Pizza</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1800/=</p>
-  <p className="text-center text-gray-600 mb-4">Crispy crust, zesty tomato sauce, mozzarella cheese, and pepperoni slices.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-{/* Menu Item - Pasta */}
-<div className="w-full shadow-xl flex flex-col p-4 rounded-lg hover:scale-105 duration-300 bg-white">
-  <img className="w-56 mx-auto mt-[-2rem]" src={food1} alt="Pasta" />
-  <h2 className="text-2xl font-bold text-center mt-4 mb-2">Creamy Alfredo Pasta</h2>
-  <p className="text-4xl font-bold text-center mb-2">Rs. 1500/=</p>
-  <p className="text-center text-gray-600 mb-4">Fettuccine pasta tossed in a creamy Alfredo sauce with parmesan cheese.</p>
-  {/* <button className="bg-[#f09c20] w-[200px] rounded-md font-medium mx-auto py-3 text-white">Order Now</button> */}
-</div>
-
-</div>
-      
-      
       </div>
 
-
-    
-
-
-
-      <div className='bg-black' ><Footer /></div>
+      <div className='bg-black'>
+        <Footer />
+      </div>
     </div>
   );
 };
 
-export default Menu;
+export default Order;

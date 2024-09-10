@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import chef from '../Assests/chef.png';
 import chef2 from '../Assests/chef2.png';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   return (
@@ -16,8 +17,8 @@ const Contact = () => {
             <h1 className='md:text-4xl sm:text-3xl text-2xl font-bold py-1 mb-2'>Get in Touch with ABC Restaurant</h1>
             <p>We'd love to hear from you! Whether you have a question about our menu, reservations, or anything else, our team is ready to answer all your questions.</p>
             <div className='flex flex-col md:flex-row mt-4'>
-              <button className='text-white bg-[#f09c20] w-[200px] rounded-md font-medium my-2 md:my-0 mx-auto md:mr-3 py-3 hover:scale-105 duration-300'>Reserve a Table</button>
-              <button className='text-white bg-[#5ba834] w-[200px] rounded-md font-medium my-2 md:my-0 mx-auto md:ml-3 py-3 hover:scale-105 duration-300'>Order Online</button>
+              <Link className='text-white bg-[#f09c20] w-[200px] rounded-md font-medium my-2 md:my-0 mx-auto md:mr-3 py-3 hover:scale-105 duration-300 text-center' to='/reservation' >Reserve a Table</Link>
+              <Link className='text-white bg-[#5ba834] w-[200px] rounded-md font-medium my-2 md:my-0 mx-auto md:ml-3 py-3 hover:scale-105 duration-300 text-center' to='/order'>Order Online</Link>
             </div>
           </div>
         </div>
