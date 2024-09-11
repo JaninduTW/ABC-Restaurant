@@ -53,8 +53,8 @@ const AdminMenuManage = () => {
         </div></div>
 
       <div className="overflow-x-auto shadow-xl">
-        <table className="min-w-full bg-white shadow rounded-lg border border-gray-200">
-          <thead className="bg-gray-200">
+      <table className="min-w-full bg-white shadow rounded-lg ">
+          <thead className="bg-white shadow-lg ">
             <tr>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">ID</th>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">Item Name</th>

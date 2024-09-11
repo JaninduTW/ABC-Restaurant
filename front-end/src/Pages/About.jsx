@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
-import Footer from '../Components/Footer'
+import Navbar from '../Homepage Components/Navbar'
+import Footer from '../Homepage Components/Footer'
 import { ReactTyped } from "react-typed";
 import g1 from '../Assests/g1.jpg';
 

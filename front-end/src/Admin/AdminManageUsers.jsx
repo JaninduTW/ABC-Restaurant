@@ -29,9 +29,9 @@ const AdminManageUsers = () => {
       <div className='flex justify-end mb-4'>
         <Link className='outline outline-[#f09c20] text-[#f09c20] hover:bg-[#f09c20] hover:text-white hover:outline-none py-2 px-4 rounded' to="/adminaddusers">Add New User</Link>  
       </div>
-      <div className="overflow-x-auto shadow-xl">
-        <table className="min-w-full bg-white shadow rounded-lg border border-gray-200">
-          <thead className="bg-gray-200">
+      <div className="overflow-x-auto shadow-2xl">
+        <table className="min-w-full bg-white shadow rounded-lg ">
+          <thead className="bg-white shadow-lg ">
             <tr>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">ID</th>
               <th className="px-4 py-2 text-center text-sm text-gray-700 font-bold">Email</th>

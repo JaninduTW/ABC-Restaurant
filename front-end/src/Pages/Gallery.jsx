@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import Navbar from '../Homepage Components/Navbar';
+import Footer from '../Homepage Components/Footer';
 import g1 from '../Assests/g1.jpg';
 import g2 from '../Assests/g2.jpg';
 import g3 from '../Assests/g3.png';

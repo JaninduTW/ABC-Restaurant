@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import Navbar from '../Homepage Components/Navbar';
+import Footer from '../Homepage Components/Footer';
 
 const Reservation = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -149,7 +149,7 @@ const Reservation = () => {
               </div>
 
               <button
-                className="w-full bg-blue-600 text-white text-base md:text-lg font-bold py-3 rounded-xl active:scale-95 transition-transform hover:scale-105"
+                className="w-full bg-[#f09c20] text-white text-base md:text-lg font-bold py-3 rounded-xl active:scale-95 transition-transform hover:scale-105"
                 onClick={checkAvailability}
               >
                 Check Availability
@@ -171,8 +171,7 @@ const Reservation = () => {
                     <option value="">Select Table</option>
                     {availableTables.map((table) => (
                       <option key={table.id} value={table.id}>
-                         {table.tableNo} with {table.noOfSeats} Seats
-                         
+                        {table.tableNo} with {table.noOfSeats} Seats
                       </option>
                     ))}
                   </select>
@@ -216,7 +215,7 @@ const Reservation = () => {
               </div>
 
               <button
-                className="w-full bg-blue-600 text-white text-base md:text-lg font-bold py-3 rounded-xl active:scale-95 transition-transform hover:scale-105"
+                className="w-full bg-[#f09c20] text-white text-base md:text-lg font-bold py-3 rounded-xl active:scale-95 transition-transform hover:scale-105"
                 onClick={handleReservation}
               >
                 Reserve Now
@@ -228,8 +227,7 @@ const Reservation = () => {
         </div>
       </div>
 
-<div className='bg-black' ><Footer /></div>
-      
+      <div className='bg-black'><Footer /></div>
     </div>
   );
 };

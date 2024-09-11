@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import Navbar from '../Homepage Components/Navbar';
+import Footer from '../Homepage Components/Footer';
 
 const Order = () => {
   const [searchTerm, setSearchTerm] = useState('');
