@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class CustomerQuery {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long queryId;
 
    @Column(nullable = false)

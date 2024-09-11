@@ -1,15 +1,12 @@
 package com.abc_restaurant.back_end.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class ResTable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -18,8 +15,6 @@ public class ResTable {
     @Column(nullable = false)
     private Long noOfSeats;
 
-    @Column(nullable = false)
-    private String contact;
 
     @Column(nullable = false)
     private String location; // e.g., MATARA
@@ -49,14 +44,6 @@ public class ResTable {
 
     public void setNoOfSeats(Long noOfSeats) {
         this.noOfSeats = noOfSeats;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 
     public String getLocation() {

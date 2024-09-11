@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
     @ManyToOne
@@ -24,6 +24,12 @@ public class Order {
 
     @Column(nullable = false)
     private String status;
+
+    @Column(nullable = false)
+    private String contact;
+
+    @Column(nullable = false)
+    private String finalPrice;
 
 
 
@@ -68,5 +74,21 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(String finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

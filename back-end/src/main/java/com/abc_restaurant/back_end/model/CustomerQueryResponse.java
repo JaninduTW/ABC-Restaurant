@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class CustomerQueryResponse {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerQueryResponseId;
 
     @OneToOne
